@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carousel</title>
+    <style>
+      .carousel img {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Carousel</h1>
+    <div class="carousel">
+      <img alt="First" src="https://placehold.co/350x200?text=1" />
+      <img alt="Second" src="https://placehold.co/350x200?text=2" />
+      <img alt="Third" src="https://placehold.co/350x200?text=3" />
+      <img alt="Fourth" src="https://placehold.co/350x200?text=4" />
+      <img alt="Fifth" src="https://placehold.co/350x200?text=5" />
+    </div>
+    <script>
+      // Define a self-executing function
+      (function () {
+        // Get all the images in the carousel
+        var images = document.querySelectorAll(".carousel img");
+        var currentIndex = 0;
+        var intervalId;
+
+        // Hide all images except the first one
+        for (let i = 1; i < images.length; i++) {
+          images[i].style.display = "none";
+        }
+
+        // Start the carousel
+        function startCarousel() {
+          intervalId = setInterval(function () {
+            // Hide the current image
+            images[currentIndex].style.display = "none";
+
+            // Move to the next image
+            currentIndex++;
+            if (currentIndex >= images.length) {
+              currentIndex = 0;
+            }
+
+            // Show the next image
+            images[currentIndex].style.display = "block";
+          }, 1000);
+        }
+
+        // Start the carousel when the page loads
+        window.addEventListener("load", startCarousel);
+      })();
+    </script>
+  </body>
+</html>
